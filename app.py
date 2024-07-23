@@ -3,7 +3,7 @@ import pandas as pd
 import tensorflow as tf  # or use keras.models if your model is a Keras model
 
 # Load your trained model (replace 'my-model.h5' with your model file)
-MODEL_PATH = "C:\Users\haneen\Desktop\my_model.h5"
+MODEL_PATH = 'C:\Users\haneen\Desktop\my_model.h5'
 model = tf.keras.models.load_model(MODEL_PATH)
 
 # Function to make predictions
