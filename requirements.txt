@@ -1,4 +1,4 @@
 streamlit
 pandas
-tensorflow
+tensorflow==2.9.0
 openpyxl
