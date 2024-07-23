@@ -6,10 +6,28 @@ import tensorflow as tf
 MODEL_PATH = 'my_model.h5'
 model = tf.keras.models.load_model(MODEL_PATH)
 
+# Preprocess descriptions if necessary
+def preprocess_descriptions(descriptions):
+    # Add your preprocessing steps here
+    # For example, tokenization, padding, etc.
+    processed_descriptions = descriptions  # Placeholder for actual preprocessing steps
+    return processed_descriptions
+
 # Function to make predictions
 def make_predictions(data):
-    # Assuming your model takes the 'Description' column and outputs the 'Predicted Label'
-    predictions = model.predict(data['Description'])
+    # Check if 'Description' column exists
+    if 'Description' not in data.columns:
+        st.error("The input data must contain a 'Description' column.")
+        return data
+
+    # Preprocess the input data
+    descriptions = preprocess_descriptions(data['Description'].astype(str))
+    
+    # Check the input data format
+    st.write("Descriptions for prediction:", descriptions)
+    
+    # Make predictions
+    predictions = model.predict(descriptions)
     data['Predicted Label'] = predictions
     return data
 
