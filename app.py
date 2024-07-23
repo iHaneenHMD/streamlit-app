@@ -1,16 +1,13 @@
 import streamlit as st
 import pandas as pd
-import tensorflow as tf  # or use keras.models if your model is a Keras model
+import tensorflow as tf
 
-# Load your trained model (replace 'my-model.h5' with your model file)
-MODEL_PATH = 'C:\Users\haneen\Desktop\my_model.h5'
+# Load your trained model (using a relative path)
+MODEL_PATH = 'my_model.h5'
 model = tf.keras.models.load_model(MODEL_PATH)
 
 # Function to make predictions
 def make_predictions(data):
-    # Preprocess the 'Description' column if necessary
-    # For example, if you need to convert text descriptions to numerical data, add that logic here
-    
     # Assuming your model takes the 'Description' column and outputs the 'Predicted Label'
     predictions = model.predict(data['Description'])
     data['Predicted Label'] = predictions
@@ -44,4 +41,3 @@ if uploaded_file is not None:
         file_name='predictions.csv',
         mime='text/csv'
     )
-
