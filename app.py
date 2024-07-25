@@ -8,9 +8,12 @@ model = tf.keras.models.load_model(MODEL_PATH)
 
 # Preprocess descriptions if necessary
 def preprocess_descriptions(descriptions):
-    # Add your preprocessing steps here
-    # For example, tokenization, padding, etc.
-    processed_descriptions = descriptions  # Placeholder for actual preprocessing steps
+    # Assuming your model needs numerical data, convert descriptions to numerical data here
+    # For example, if your model uses tokenized text, convert text to tokens
+    # This is a placeholder for actual preprocessing steps
+    # Convert descriptions to a numpy array of floats (this example assumes the descriptions can be converted directly)
+    processed_descriptions = descriptions.astype(float)
+    processed_descriptions = processed_descriptions.reshape(-1, 1)  # Reshape if necessary
     return processed_descriptions
 
 # Function to make predictions
